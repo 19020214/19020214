@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+ class Word{
+    String word_target;
+    String word_explain;
+
+    public static void main(String[] args){
+        
+    }
+//    public void setWord_target(String word_target){ this.word_target = word_target; }
+//    public String getWord_target() { return word_target; }
+//    public void setWord_explain(String word_explain) { this.word_explain = word_explain; }
+//    public String getWord_explain() { return word_explain; }
+
+}
+class Dictionary{
+    Word[] words = new Word[100];
+}
+class DictionaryManagement{
+    private static Scanner scanner = new Scanner(System.in);
+    public void insertFromCommandline() {
+        int n = scanner.nextInt();
+        Dictionary dic = new Dictionary();
+        for (int i = 0; i < n; i++) {
+            dic.words[i].word_target = scanner.nextLine();
+            dic.words[i].word_explain = scanner.nextLine();
+        }
+    }
+}
+class DictionaryCommandline {
+    public void showAllWords() {
+        Dictionary dic = new Dictionary();
+        System.out.println("No   | English        |Vietnamese");
+        for (int i = 0; i < dic.words.length; i++) {
+            System.out.println(i + 1 + "    | " + dic.words[i].word_target + "            | " + dic.words[i].word_explain);
+
+        }
+    }
+    public void dictionaryBasic(){
+        DictionaryManagement dm = new DictionaryManagement();
+        dm.insertFromCommandline();
+        showAllWords();
+    }
+}
+
+
+
