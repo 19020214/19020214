@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -46,6 +49,34 @@ class DictionaryManagement {
             Dictionary.words.add(word);
         }
     }
+    public static void insertFromFile() throws IOException {
+        Scanner scanner = new Scanner(Paths.get("C:\\Users\\LENOVO\\IdeaProjects\\Dictionary\\src\\dictionaries.txt"), "UTF-8");
+        File dictionaries = new File("C:\\Users\\LENOVO\\IdeaProjects\\Dictionary\\src\\dictionaries.txt");
+        if(dictionaries.exists()){
+            while (scanner.hasNextLine()) {
+                String a = scanner.next();
+                String b = scanner.nextLine();
+                Word word = new Word(a, b);
+                Dictionary.words.add(word);
+
+            }
+            scanner.close( );
+        }
+        else System.out.println("Error");
+    }
+    public static void dictionaryLookup() {
+        String word_Lookup;
+        Scanner scanner = new Scanner(System.in);
+        word_Lookup = scanner.nextLine();
+        boolean check = false;
+        for (int i = 0; i < Dictionary.words.size(); i++) {
+            if (Dictionary.words.get(i).getWord_target().equals(word_Lookup) || Dictionary.words.get(i).getWord_explain().equals("\t"+word_Lookup)) {
+                check = true;
+            }
+        }
+        if (check) System.out.println("Found");
+        else System.out.println("Not found");
+    }
 }
 class DictionaryCommandline {
     public void showAllWords(){
@@ -59,11 +90,17 @@ class DictionaryCommandline {
         DictionaryManagement.insertFromCommandline();
         showAllWords();
     }
-    public static void main(String[] args) {
+    public void dictionaryAdvanced() throws IOException {
+        DictionaryManagement.insertFromFile();
+        showAllWords();
+        DictionaryManagement.dictionaryLookup();
+    }
+    public static void main(String[] args) throws IOException {
         // DictionaryManagement dm = new DictionaryManagement();
         // dm.insertFromCommandline();
         DictionaryCommandline dc = new DictionaryCommandline();
-        dc.dictionaryBasic();
+//        dc.dictionaryBasic();
+        dc.dictionaryAdvanced();
 
     }
 }

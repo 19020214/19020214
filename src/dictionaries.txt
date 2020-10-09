@@ -1,0 +1,18 @@
+a	mot
+add	them vao
+array	mang
+beautiful	xinh dep
+book	quyen sach
+boy	con trai
+char	ki tu
+download	tai xuong
+flower	hoa
+fly	bay
+girl	con gai
+good	tot
+handsome	dep trai
+happy	vui ve
+hello	xin chao
+hi	xin chao
+money	tien bac
+string	xau ki tu
