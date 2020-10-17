@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -60,7 +59,7 @@ class DictionaryManagement {
                 Dictionary.words.add(word);
 
             }
-            scanner.close( );
+            scanner.close();
         }
         else System.out.println("Error");
     }
@@ -76,6 +75,18 @@ class DictionaryManagement {
         }
         if (check) System.out.println("Found");
         else System.out.println("Not found");
+    }
+    public static void dictionaryExportToFile() throws IOException {
+        File dictionaries = new File("C:\\Users\\LENOVO\\IdeaProjects\\Dictionary\\src\\dictionaries.txt");
+        OutputStream outputStream = new FileOutputStream(dictionaries);
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
+        for (int i = 0; i < Dictionary.words.size(); i++) {
+            outputStreamWriter.write(Dictionary.words.get(i).getWord_target());
+            outputStreamWriter.write("\t");
+            outputStreamWriter.write(Dictionary.words.get(i).getWord_explain());
+            outputStreamWriter.write("\n");
+        }
+        outputStreamWriter.flush();
     }
 }
 class DictionaryCommandline {
@@ -93,7 +104,9 @@ class DictionaryCommandline {
     public void dictionaryAdvanced() throws IOException {
         DictionaryManagement.insertFromFile();
         showAllWords();
-        DictionaryManagement.dictionaryLookup();
+//        DictionaryManagement.dictionaryLookup();
+//        DictionaryManagement.dictionaryExportToFile();
+        dictionarySearcher();
     }
     public static void main(String[] args) throws IOException {
         // DictionaryManagement dm = new DictionaryManagement();
@@ -101,7 +114,16 @@ class DictionaryCommandline {
         DictionaryCommandline dc = new DictionaryCommandline();
 //        dc.dictionaryBasic();
         dc.dictionaryAdvanced();
-
+    }
+    public void dictionarySearcher() {
+        String Query;
+        Scanner scanner = new Scanner(System.in);
+        Query = scanner.nextLine();
+        for (int i = 0; i < Dictionary.words.size(); i++) {
+            if ((Dictionary.words.get(i).getWord_target().startsWith(Query)) && (Dictionary.words.get(i).getWord_target().contains(Query))) {
+                System.out.println(Dictionary.words.get(i).getWord_target());
+            }
+        }
     }
 }
 
