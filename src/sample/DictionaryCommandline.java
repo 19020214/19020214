@@ -1,6 +1,7 @@
 package sample;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class DictionaryCommandline {
@@ -18,9 +19,9 @@ class DictionaryCommandline {
     public void dictionaryAdvanced() throws IOException {
         DictionaryManagement.insertFromFile();
         showAllWords();
-//        DictionaryManagement.dictionaryLookup();
+        System.out.println(DictionaryManagement.dictionaryLookup("hello"));
 //        DictionaryManagement.dictionaryExportToFile();
-        dictionarySearcher();
+        System.out.println(dictionarySearcher("h"));
     }
     public static void main(String[] args) throws IOException {
         // DictionaryManagement dm = new DictionaryManagement();
@@ -29,14 +30,18 @@ class DictionaryCommandline {
 //        dc.dictionaryBasic();
         dc.dictionaryAdvanced();
     }
-    public void dictionarySearcher() {
-        String Query;
-        Scanner scanner = new Scanner(System.in);
-        Query = scanner.nextLine();
+    public ArrayList<String> dictionarySearcher(String searchWord) {
+//        String Query;
+//        Scanner scanner = new Scanner(System.in);
+//        Query = scanner.nextLine();
+        ArrayList arrayList = new ArrayList<String>();
+        System.out.println(searchWord);
         for (int i = 0; i < Dictionary.words.size(); i++) {
-            if ((Dictionary.words.get(i).getWord_target().startsWith(Query)) && (Dictionary.words.get(i).getWord_target().contains(Query))) {
-                System.out.println(Dictionary.words.get(i).getWord_target());
+            String word =  Dictionary.words.get(i).getWord_target();
+            if ((word.startsWith(searchWord))) {
+                arrayList.add(word);
             }
         }
+        return arrayList;
     }
 }

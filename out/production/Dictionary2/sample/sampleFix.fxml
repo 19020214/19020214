@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="271.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FixController">
+   <children>
+      <Label layoutX="215.0" layoutY="23.0" text="Sửa">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="77.0" text="Từ cần sửa">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="120.0" text="Từ mới">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="160.0" text="Nghĩa">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField id="tfAddE1" fx:id="tfAddE1" layoutX="141.0" layoutY="72.0" prefHeight="29.0" prefWidth="190.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField id="tfAddE2" fx:id="tfAddE2" layoutX="140.0" layoutY="115.0" prefHeight="29.0" prefWidth="190.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField id="tfAddV" fx:id="tfAddV" layoutX="140.0" layoutY="155.0" prefHeight="29.0" prefWidth="190.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Button id="Submit" fx:id="Submit" layoutX="140.0" layoutY="213.0" mnemonicParsing="false" onAction="#clickFixWord" text="Submit">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button id="Back" fx:id="Back" layoutX="271.0" layoutY="213.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="59.0" text="Back">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
